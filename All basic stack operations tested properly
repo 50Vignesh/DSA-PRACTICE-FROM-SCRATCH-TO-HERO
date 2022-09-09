@@ -1,0 +1,79 @@
+import java.util.*;
+class stack {
+    int [] a;
+    int top;
+    int siz;
+    stack(int siz){
+       this.a=new int[siz];
+       this.siz=siz;
+       System.out.println("stack created of size: "+siz);
+       this.top=-1;
+
+    }
+   boolean IsEmpty(){
+        if(top<0){
+             
+           System.out.println("stack is empty");
+           return true;
+        }
+        else {
+        System.out.println("stack is not full");
+          return false;
+    }
+   }
+   boolean IsFull(){
+        if(top>(siz-1)){
+            
+       System.out.println("stack is full");
+       return true;
+        }
+        else{
+             System.out.println("stack is not empty");
+         return false;
+        }
+   }
+    int  peek(){
+        if(top<0){
+            System.out.println("stack is empty");
+            return -1;
+        }
+        else
+            return (a[top]);
+    }
+      public void push(int x){
+         if(top>(siz-1)){
+            System.out.println("stack is full no element can be pushed");
+         }
+         else{
+            a[++top]=x;
+            System.out.println(x+"is pushed in the stack");
+         }
+      }
+      public int pop(){
+        if(top<0){
+            System.out.println("stack is empty no element can be popped");
+            return 0;
+        }
+        else{
+            int an=a[top--];
+           
+            System.out.println(an+"is poped from the stack");
+            return an;
+        }
+      }
+
+
+}
+public class basic{
+    public static void main(String[] args) {
+        stack obj=new stack(4);
+        Scanner sc=new Scanner(System.in);
+         obj.push(10);
+         obj.push(20);
+         obj.push(30);
+         int A=obj.peek();
+         System.out.println(A);
+         obj.IsEmpty();
+         
+    } 
+}
