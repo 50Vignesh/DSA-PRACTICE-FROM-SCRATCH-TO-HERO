@@ -1,0 +1,92 @@
+import java.util.*;
+class operate{
+    int [] a;
+    int front;
+    int rear;
+    int size;
+    public operate(int size){
+       this.a=new int[size];
+       front = -1;
+       rear = -1;
+       this.size=size;
+        System.out.println("Queue successfully created of size: "+size);
+    }
+   public int  IsQfull(){
+       if(front==0 && rear>(size-1)){
+       // System.out.println("Queue is full");
+        return 1;
+       }
+       else{
+       // System.out.println("Queue is not full");
+        return 0;
+       }
+    }
+    public int IsQempty(){
+        if(front==-1 || (front>rear)){
+          // System.out.println("Queue is empty");
+            return 1;
+        }
+        else{
+           // System.out.println("Queue is  not empty");
+            return 0;
+        }
+    }
+    public void EnQ(int x){
+          if(IsQfull()==1){
+            System.out.println("Queue is full..Nothing can be Enqueued");
+          }
+          else{
+            if(front==-1){
+                front=0;
+            }
+            rear++;
+            a[rear]=x;
+            System.out.println(x+"Enqueued successfully");
+          }
+    }
+    public void DQ(){
+        if(IsQempty()==1){
+            System.out.println("Queue is empty..nothing can be Dequeued");
+        }
+        else{
+            int x=a[front];
+            front++;
+            System.out.println(x+"is Dequeued from the queue");
+            if(front>rear){
+                front = rear = -1;
+            }
+        }
+    }
+    public int peek(){
+        if(IsQempty()==1){
+            return -1;
+        }
+        else {
+            int x = a[front];
+            return x;
+        }
+    }
+    public void deleteQ(){
+        a = null;
+        System.out.println("Queue is deleted successfully");
+    }
+}
+public class Q{ //  Main class
+    public static void main(String[] args) {
+        operate obj=new operate(5);
+        Scanner sc=new Scanner(System.in);
+        obj.EnQ(10);
+        obj.EnQ(20);
+        obj.EnQ(30);
+       int a= obj.IsQempty();
+        if(a==1){
+            System.out.println("Queue is empty");
+        }
+        else {
+            System.out.println("Queue is not empty");
+        }
+        
+
+    }
+   
+}
