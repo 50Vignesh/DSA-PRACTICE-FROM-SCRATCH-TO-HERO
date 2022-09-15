@@ -1,0 +1,119 @@
+import java.util.*;
+class queue{
+int [] a;
+int size;
+int front;
+int rear;
+ public queue(int size){
+     this.size=size;
+     this.a= new int[size];
+     System.out.println("Queue created of size: "+size);
+     front=-1;
+     rear=-1;
+
+ }
+ public int isFull(){
+   if((front==0 && rear>(size-1))){
+     return 1;
+   }
+   else {
+   return 0;
+   }
+ 
+ }
+ public int isEmpty(){
+   if(rear==-1){
+       return 1;
+   }
+   else{
+   return 0;
+   }
+ 
+ }
+ void EnQ(int x){
+    if(isFull()==1){
+       System.out.println("Queue is full!");
+    }
+    else{
+     if(front==-1){
+      front =0;
+     }
+     rear++;
+     a[rear] = x;
+     System.out.println(x+"enqueued in the queue");
+     System.out.println("Current queue");
+     for(int i=front; i<=rear; i++){
+      System.out.println(a[i]);
+     }
+ 
+}
+
+}
+  void DQ(){
+   if(isEmpty()==1){
+        System.out.println("Queue is Empty!");
+   }
+   else{
+   int x=a[front];
+      System.out.println(x+"dequed from the queue");
+      front++;
+     System.out.println("Current queue");
+     for(int i=front; i<=rear; i++){
+      System.out.println(a[i]);
+     }
+   
+   }
+ 
+}
+}
+  public class exp2dsa{
+    public static void main(String[] args){
+     Scanner sc=new Scanner(System.in);
+     System.out.println("Queue Operations... you need to create a queue for these operation");
+     System.out.println("enter the size of the queue:  ");
+     int size=sc.nextInt();
+     queue obj=new queue(size);
+     System.out.println("Make an entry 1 to enqueue an element");
+     System.out.println("Make an entry 2 to dequeue an element");
+     System.out.println("Make an entry 3 to check if queue is  an overflow");
+     System.out.println("Make an entry 4 to check  if queue is underflow");
+     System.out.println("Make an entry 0 to terminate the program");
+     for(int i=0; i<20; i++){
+     int r=sc.nextInt();
+       if(r==1){
+      System.out.println("enter the element to enqueue: ");
+       int v=sc.nextInt();
+      obj.EnQ(v);
+   }
+   if(r==2){
+       obj.DQ();
+       
+   }
+   if(r==3){
+    int temp=obj.isFull();
+    if(temp==1){
+        System.out.println("Queue is full...overflow condition");
+    }
+    else if(temp==0){
+        System.out.println("queue is not full... you can enqueue elements");
+   }
+  }
+  if(r==4){
+      int temp=obj.isEmpty();
+    if(temp==1){
+        System.out.println("Queue is  empty...underflow condition");
+    }
+    else if(temp==0){
+        System.out.println("queue is not full...you can dequeue elements");
+   }
+  }
+  if(r==0){
+      break;
+  }
+ 
+  }
+  }
+}
+
+
+ 
