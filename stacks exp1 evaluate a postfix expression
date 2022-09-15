@@ -1,0 +1,146 @@
+import java.util.*;
+class pagal{
+    int [] a;
+    int size,top;
+    pagal(int size){
+       this.size=size;
+       this.a=new int[size];
+       top = -1;
+       System.out.println("stack created of size: "+size);
+
+    }
+    public int isSfull(){
+        if(top>(size-1)){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+    public int isSempty(){
+        if(top<0){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+
+    public int pop(){
+        if(isSempty()==1){
+            System.out.println("stack is empty..No popping");
+            throw new EmptyStackException();
+        }
+        else{
+            int x = a[top];
+         
+           
+            System.out.println("element deleted: "+x);
+            return a[top--];
+        }
+    }
+    public void push(int x){
+        if(isSfull()==1){
+         System.out.println("stack is full..No pushing");
+        }
+        else{
+         a[++top]=x;
+         System.out.println("element inserted: "+x);
+      
+         printStack();
+        }
+ }
+   int random(){
+    return top;
+   }
+    public void maha(String s ){                     //program's heart...
+             
+             for(int i=0; i<(s.length()); i++){
+                if(Character.isDigit(s.charAt(i))){
+                    String p = Character.toString(s.charAt(i));
+                   
+                    push(Integer.parseInt(p));
+                }
+
+                else{
+                    char operator = s.charAt(i);
+                    if(operator=='+'){
+                        int a=pop();
+                        
+                        int b=pop();
+                        int ans= b + a;
+                        push(ans);
+                    }
+                    if(operator=='-'){
+                        int a=pop();
+                        int b=pop();
+                        int ans= b - a;
+                        push(ans);
+                    }
+                    if(operator=='*'){
+                        int a=pop();
+                        int b=pop();
+                        int ans= b * a;
+                        push(ans);
+                    }
+                    if(operator=='/'){
+                        int a=pop();
+                        int b=pop();
+                        int ans= b / a;
+                        push(ans);
+                    }
+                    if(operator=='%'){
+                        int a=pop();
+                        int b=pop();
+                        int ans= b % a;
+                        push(ans);
+                    }
+                }
+             
+             }
+    }
+
+    public void printStack(){
+        System.out.println("current stack: ");
+        for(int i=top; i>=0; i--){
+            System.out.println(a[i]);
+        }
+    }
+
+}
+public class exp1dsa {
+    public static void main(String[] args) {
+       
+        Scanner sc=new Scanner(System.in);
+        //System.out.println("enter the length of the string: ");
+       // int l=sc.nextInt();
+        System.out.println("enter the string: ");
+        String  s=sc.nextLine();
+        int l= s.length();
+        int a=0;
+        for(int i=0; i<l; i++){
+            if(Character.isDigit(s.charAt(i))){
+           a++;
+            }
+        }
+    
+        
+        pagal obj=new pagal(a);
+        obj.maha(s);
+      
+        int r=obj.random();
+       
+             
+        if(r==0){
+            System.out.println("final ans.");
+        }
+        else{
+            System.out.println("wrong input eqn");
+      
+        }
+    }
+}
+
+//if(s[i]==0 ||  s[i]==1 ||  s[i]==2 ||  s[i]==3 ||  s[i]==4 ||  s[i]==5 ||  s[i]==6 ||  s[i]==7 ||  s[i]==8 ||  s[i]==9 ){
+   // push(Integer.parseInt(s[i]));
+//}
