@@ -1,0 +1,32 @@
+import java.util.*; 
+ class Node{
+    int value;
+     Node next;
+} 
+
+ class createlinkedlist{
+    public Node head;
+   // public Node tail;
+   // public int size;
+ 
+     void create(int x){
+        head = new Node();
+        Node n = new Node();
+    
+        n.value=x;
+        n.next=null;
+        head=n;
+       // tail=n;
+        //size=1;
+        System.out.println(n.value);
+     }
+    
+}
+
+public class SinglyLinledlist1Node {
+    public static void main(String[] args) {
+      createlinkedlist obj = new createlinkedlist();
+       obj.create(10);
+    
+    }
+}
