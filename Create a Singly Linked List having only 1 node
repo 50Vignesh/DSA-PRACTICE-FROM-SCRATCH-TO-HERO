@@ -6,8 +6,8 @@ import java.util.*;
 
  class createlinkedlist{
     public Node head;
-   // public Node tail;
-   // public int size;
+    public Node tail;                                                    //You can run this code properly with and without removing tail and size
+    public int size;
  
      void create(int x){
         head = new Node();
@@ -16,8 +16,8 @@ import java.util.*;
         n.value=x;
         n.next=null;
         head=n;
-       // tail=n;
-        //size=1;
+        tail=n;
+        size=1;
         System.out.println(n.value);
      }
     
